@@ -1,5 +1,6 @@
-package com.zbkj.front;
+package com.zbkj.admin;
 
+import lombok.extern.slf4j.Slf4j;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -12,25 +13,21 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 /**
  * 程序主入口
- * +----------------------------------------------------------------------
- * | CRMEB [ CRMEB赋能开发者，助力企业发展 ]
- * +----------------------------------------------------------------------
- * | Copyright (c) 2016~2022 https://www.crmeb.com All rights reserved.
- * +----------------------------------------------------------------------
- * | Licensed CRMEB并不是自由软件，未经许可不能去掉CRMEB相关版权
- * +----------------------------------------------------------------------
- * | Author: CRMEB Team <admin@crmeb.com>
- * +----------------------------------------------------------------------
+ *
  */
 @EnableAsync //开启异步调用
 @EnableSwagger2
 @Configuration
 @EnableTransactionManagement
 @SpringBootApplication(exclude = DataSourceAutoConfiguration.class) //去掉数据源
-@ComponentScan(basePackages = {"com.zbkj", "com.zbkj.front"})
+@ComponentScan(basePackages = {"com.zbkj"})
 @MapperScan(basePackages = {"com.zbkj.**.dao"})
-public class CrmebFrontApplication {
+@Slf4j
+public class AdminApplication {
+
     public static void main(String[] args) {
-        SpringApplication.run(CrmebFrontApplication.class, args);
+        SpringApplication.run(AdminApplication.class, args);
+        log.info(">>> " + AdminApplication.class.getSimpleName() + " is success!");
     }
+
 }
